@@ -1,5 +1,5 @@
-import { IBlogPost } from "../@types";
-import { PostPreview } from "./PostPreview";
+import { PostPreview } from "components/PostPreview/PostPreview";
+import { IBlogPost } from "libs/@types";
 
 interface IMoreStoriesProps {
   posts: IBlogPost[];

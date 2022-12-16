@@ -1,8 +1,8 @@
-import { IBlogPost } from "../@types";
-import { Avatar } from "./Avatar";
-import { CoverImage } from "./CoverImage";
-import { DateComponent } from "./DateComponent";
-import { PostTitle } from "./PostTitle";
+import { IBlogPost } from "libs/@types";
+import { Avatar } from "libs/shared-UI/Avatar";
+import { CoverImage } from "libs/shared-UI/CoverImage";
+import { DateComponent } from "libs/shared-UI/DateComponent";
+import { PostTitle } from "libs/shared-UI/PostTitle";
 
 export const PostHeader = ({
   title,

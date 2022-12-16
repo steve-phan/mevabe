@@ -1,4 +1,3 @@
-import { IAuthor } from "../@types";
 import { ContentfulImage } from "./ContentfulImage";
 
 interface IAvatarProps {

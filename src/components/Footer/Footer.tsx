@@ -1,4 +1,4 @@
-import { Container } from "./Container";
+import { Container } from "libs/shared-UI/Container";
 
 export const Footer = () => {
   return (

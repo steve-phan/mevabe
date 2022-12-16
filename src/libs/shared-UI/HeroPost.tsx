@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { IBlogPost } from "../@types";
 import { Avatar } from "./Avatar";
 

@@ -1,9 +1,8 @@
+import { IBlogPost } from "libs/@types";
+import { Avatar } from "libs/shared-UI/Avatar";
+import { CoverImage } from "libs/shared-UI/CoverImage";
+import { DateComponent } from "libs/shared-UI/DateComponent";
 import Link from "next/link";
-
-import { IBlogPost } from "../@types";
-import { Avatar } from "./Avatar";
-import { CoverImage } from "./CoverImage";
-import { DateComponent } from "./DateComponent";
 
 type TPostPreviewProps = Omit<Omit<IBlogPost, "description">, "body">;
 

@@ -2,18 +2,15 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import ErrorPage from "next/error";
 
-import { Layout } from "../../libs/UI/Layout";
-import { Container } from "../../libs/UI/Container";
-import { PostTitle } from "../../libs/UI/PostTitle";
-import { PostHeader } from "../../libs/UI/PostHeader";
-import { PostBody } from "../../libs/UI/PostBody";
-import { SectionSeparator } from "../../libs/UI/SectionSeparator";
-import { MoreStories } from "../../libs/UI/MoreStories";
-import {
-  getAllPostsWithSlug,
-  getPostAndMorePosts,
-} from "../../libs/contentful";
-import { IBlogPost } from "../../libs/@types";
+import { Container } from "libs/shared-UI/Container";
+import { PostTitle } from "libs/shared-UI/PostTitle";
+import { PostBody } from "libs/shared-UI/PostBody";
+import { SectionSeparator } from "libs/shared-UI/SectionSeparator";
+import { getAllPostsWithSlug, getPostAndMorePosts } from "libs/contentful";
+import { IBlogPost } from "libs/@types";
+import { Layout } from "components/Layout/Layout";
+import { PostHeader } from "components/PostHeader/PostHeader";
+import { MoreStories } from "components/MoreStories/MoreStories";
 
 interface IStaticProps {
   params: {
@@ -34,8 +31,6 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }
-  const { title, heroImage, publishDate, author, slug } = post;
-  const postHeaderProps = { title, heroImage, publishDate, author, slug };
 
   return (
     <Layout>
@@ -45,7 +40,13 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
         ) : (
           <>
             <article>
-              <PostHeader {...postHeaderProps} />
+              <PostHeader
+                title={post.title}
+                heroImage={post.heroImage}
+                publishDate={post.publishDate}
+                author={post.author}
+                slug={post.slug}
+              />
 
               <PostBody content={post.body} />
             </article>
@@ -77,6 +78,7 @@ export async function getStaticProps({
 
 export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
+
   const paths =
     allPosts?.map(({ slug }: { slug: string }) => `/posts/${slug}`) ?? [];
 

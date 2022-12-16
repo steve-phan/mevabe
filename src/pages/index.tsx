@@ -3,13 +3,13 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 
 import styles from "../styles/Home.module.css";
-import { getAllBlogPosts } from "../libs/contentful";
-import { Container } from "../libs/UI/Container";
-import Intro from "../libs/UI/Intro";
-import { HeroPost } from "../libs/UI/HeroPost";
-import { MoreStories } from "../libs/UI/MoreStories";
-import { Layout } from "../libs/UI/Layout";
-import { IBlogPost } from "../libs/@types";
+import { getAllBlogPosts } from "libs/contentful";
+import { Container } from "libs/shared-UI/Container";
+import Intro from "components/Intro/Intro";
+import { HeroPost } from "libs/shared-UI/HeroPost";
+import { IBlogPost } from "libs/@types";
+import { Layout } from "components/Layout/Layout";
+import { MoreStories } from "components/MoreStories/MoreStories";
 
 const inter = Inter({ subsets: ["latin"] });
 

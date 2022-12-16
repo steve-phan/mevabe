@@ -2,7 +2,6 @@ import Link from "next/link";
 import cn from "classnames";
 
 import { ContentfulImage } from "./ContentfulImage";
-import { IBlogPost } from "../@types";
 
 interface ICoverImageProps {
   alt: string;

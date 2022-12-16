@@ -34,6 +34,8 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }
+  const { title, heroImage, publishDate, author, slug } = post;
+  const postHeaderProps = { title, heroImage, publishDate, author, slug };
 
   return (
     <Layout>
@@ -43,13 +45,7 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
         ) : (
           <>
             <article>
-              <PostHeader
-                title={post.title}
-                heroImage={post.heroImage}
-                publishDate={post.publishDate}
-                author={post.author}
-                slug={post.slug}
-              />
+              <PostHeader {...postHeaderProps} />
 
               <PostBody content={post.body} />
             </article>

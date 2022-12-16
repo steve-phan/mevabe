@@ -24,3 +24,7 @@ To learn more about Contentful, take a look at the following resources:
 Check out [The better runtime for Next.js](https://www.netlify.com/with/nextjs/) for more details.
 
 ## Styles?
+
+## Dev notes
+
+[How do I clone a subdirectory only of a Git repository?](https://stackoverflow.com/a/73254328)

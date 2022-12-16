@@ -1,27 +1,27 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+/* eslint-disable react/no-children-prop */
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 import markdownStyles from "./markdown-styles.module.css";
-import { RichTextAsset } from "./RichTextAsset";
+import { CoverImage } from "./CoverImage";
 
-const customMarkdownOptions = (content: any) => ({
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
-      <RichTextAsset
-        id={node.data.target.sys.id}
-        assets={content.links.assets.block}
-      />
-    ),
-  },
-});
-
-export const PostBody = ({ content }: any) => {
+export const PostBody = ({ content }: { content: string }) => {
   return (
     <div className="max-w-2xl mx-auto">
       <div className={markdownStyles["markdown"]}>
-        {documentToReactComponents(
-          content.json,
-          customMarkdownOptions(content)
-        )}
+        <ReactMarkdown
+          children={content}
+          components={{
+            img: (node) => (
+              <CoverImage
+                alt={node?.alt || "mevebe website"}
+                url={node?.src || ""}
+              />
+            ),
+            p: "div", //TIPS: <div> cannot appear as a descendant of <p>
+          }}
+          remarkPlugins={[remarkGfm]}
+        />
       </div>
     </div>
   );

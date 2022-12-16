@@ -18,7 +18,7 @@ export const PostHeader = ({
         {author && <Avatar name={author.name} image={author.image} />}
       </div>
       <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} url={heroImage.url} slug={slug} />
+        <CoverImage title={title} url={heroImage.url} alt={slug} />
       </div>
       <div className="max-w-2xl mx-auto">
         <div className="block md:hidden mb-6">

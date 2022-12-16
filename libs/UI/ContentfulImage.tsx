@@ -1,7 +1,7 @@
 import Image, { ImageProps } from "next/image";
 
 const contentfulLoader = ({ src, width }: Partial<IContentfulImageProps>) => {
-  return `${src}?w=${width}&q=75`;
+  return `${src}?w=${width}&q=25`;
 };
 
 interface IContentfulImageProps {

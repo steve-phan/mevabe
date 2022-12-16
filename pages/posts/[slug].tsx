@@ -43,10 +43,6 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
         ) : (
           <>
             <article>
-              <Head>
-                <title>{post.title} | Next.js Blog Example with</title>
-                <meta property="og:image" content={post.heroImage.url} />
-              </Head>
               <PostHeader
                 title={post.title}
                 heroImage={post.heroImage}
@@ -54,6 +50,7 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
                 author={post.author}
                 slug={post.slug}
               />
+
               <PostBody content={post.body} />
             </article>
             <SectionSeparator />

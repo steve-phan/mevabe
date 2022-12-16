@@ -5,20 +5,23 @@ import { ContentfulImage } from "./ContentfulImage";
 import { IBlogPost } from "../@types";
 
 interface ICoverImageProps {
-  title: string;
+  alt: string;
   url: string;
-  slug: string;
+  slug?: string;
+  title?: string;
 }
 
-export const CoverImage = ({ title, url, slug }: ICoverImageProps) => {
+export const CoverImage = ({ url, alt, slug, title }: ICoverImageProps) => {
   const image = (
     <ContentfulImage
-      width={1600}
-      height={800}
-      alt={`Cover Image for ${title}`}
-      className={cn("shadow-small", {
-        "hover:shadow-medium transition-shadow duration-200": slug,
-      })}
+      width={680}
+      height={340}
+      alt={alt}
+      className={cn(
+        "mx-auto",
+        "shadow-small",
+        "hover:shadow-medium transition-shadow duration-200"
+      )}
       src={url}
     />
   );

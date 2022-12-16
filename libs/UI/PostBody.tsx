@@ -1,4 +1,5 @@
 /* eslint-disable react/no-children-prop */
+//@ts-nocheck
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -12,13 +13,18 @@ export const PostBody = ({ content }: { content: string }) => {
         <ReactMarkdown
           children={content}
           components={{
-            img: (node) => (
-              <CoverImage
-                alt={node?.alt || "mevebe website"}
-                url={node?.src || ""}
-              />
-            ),
-            p: "div", //TIPS: <div> cannot appear as a descendant of <p>
+            p: (node) => {
+              if (node?.children[0]?.type === "img") {
+                return (
+                  <CoverImage
+                    alt={node?.children[0]?.props?.alt || "mevebe website"}
+                    url={node?.children[0]?.props?.src || ""}
+                  />
+                );
+              }
+
+              return <p>{node?.children}</p>;
+            },
           }}
           remarkPlugins={[remarkGfm]}
         />

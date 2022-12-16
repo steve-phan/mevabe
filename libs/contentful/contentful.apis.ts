@@ -66,7 +66,7 @@ export async function getPostAndMorePosts(slug: string, preview = true) {
     }`,
     preview
   );
-  console.log({ entry });
+
   const entries = await fetchGraphQL(
     `query {
       blogPostCollection(where: { slug_not_in: "${slug}" }, order: publishDate_DESC, preview: ${

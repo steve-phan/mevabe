@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import ErrorPage from "next/error";
+import {} from "next";
 
 import { Layout } from "../../libs/UI/Layout";
 import { Container } from "../../libs/UI/Container";
@@ -13,8 +14,22 @@ import {
   getAllPostsWithSlug,
   getPostAndMorePosts,
 } from "../../libs/contentful";
+import { IBlogPost } from "../../libs/@types";
 
-export default function Post({ post, morePosts, preview }) {
+interface IStaticProps {
+  params: {
+    slug: string;
+  };
+  preview: boolean;
+}
+
+interface IPostProps {
+  post: IBlogPost;
+  morePosts: IBlogPost[];
+  preview: boolean;
+}
+
+export default function Post({ post, morePosts, preview }: IPostProps) {
   const router = useRouter();
 
   if (!router.isFallback && !post) {
@@ -53,8 +68,10 @@ export default function Post({ post, morePosts, preview }) {
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  console.log({ params });
+export async function getStaticProps({
+  params,
+  preview = false,
+}: IStaticProps) {
   const data = await getPostAndMorePosts(params.slug, preview);
 
   return {
@@ -70,7 +87,6 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
   const paths =
     allPosts?.map(({ slug }: { slug: string }) => `/posts/${slug}`) ?? [];
-  console.log({ paths });
 
   return {
     paths,

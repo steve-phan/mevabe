@@ -12,7 +12,6 @@ export const HeroPost = ({
   author,
   slug,
 }: IBlogPost) => {
-  console.log({ heroImage: heroImage?.url });
   return (
     <section>
       <div className="mb-8 md:mb-16">

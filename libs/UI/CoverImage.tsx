@@ -11,7 +11,6 @@ interface ICoverImageProps {
 }
 
 export const CoverImage = ({ title, url, slug }: ICoverImageProps) => {
-  console.log({ url });
   const image = (
     <ContentfulImage
       width={1600}

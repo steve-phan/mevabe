@@ -1,5 +1,5 @@
 import { GET_ALL_POSTS } from "./contentful.constants";
-import { extractPostsFromEntries } from "./contentful.utils";
+import { extractPost, extractPostsFromEntries } from "./contentful.utils";
 
 export const fetchGraphQL = async (query: string, preview = false) => {
   try {
@@ -39,3 +39,48 @@ export const getAllBlogPosts = async (preview: boolean) => {
   );
   return extractPostsFromEntries(entries);
 };
+
+export const getAllPostsWithSlug = async () => {
+  const entries = await fetchGraphQL(
+    `query {
+      blogPostCollection(where: { slug_exists: true }, order: publishDate_DESC) {
+        items {
+          ${GET_ALL_POSTS}
+        }
+      }
+    }`
+  );
+  return extractPostsFromEntries(entries);
+};
+
+export async function getPostAndMorePosts(slug: string, preview = true) {
+  const entry = await fetchGraphQL(
+    `query {
+      blogPostCollection(where: { slug: "${slug}" }, preview: ${
+      preview ? "true" : "false"
+    }, limit: 1) {
+        items {
+          ${GET_ALL_POSTS}
+        }
+      }
+    }`,
+    preview
+  );
+  console.log({ entry });
+  const entries = await fetchGraphQL(
+    `query {
+      blogPostCollection(where: { slug_not_in: "${slug}" }, order: publishDate_DESC, preview: ${
+      preview ? "true" : "false"
+    }, limit: 2) {
+        items {
+          ${GET_ALL_POSTS}
+        }
+      }
+    }`,
+    preview
+  );
+  return {
+    post: extractPost(entry),
+    morePosts: extractPostsFromEntries(entries),
+  };
+}

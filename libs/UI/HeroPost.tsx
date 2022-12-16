@@ -8,8 +8,6 @@ import { DateComponent } from "./DateComponent";
 export const HeroPost = ({
   title,
   heroImage,
-  // date,
-  // excerpt,
   publishDate,
   author,
   slug,
@@ -33,7 +31,7 @@ export const HeroPost = ({
         </div>
         <div>
           {/* <p className="text-lg leading-relaxed mb-4">{excerpt}</p> */}
-          {author && <Avatar name={author.name} image={author?.image} />}
+          {author && <Avatar name={author.name} image={author.image} />}
         </div>
       </div>
     </section>

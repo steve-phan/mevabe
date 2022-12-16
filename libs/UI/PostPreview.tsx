@@ -14,7 +14,7 @@ export const PostPreview = ({
   author,
   slug,
 }: TPostPreviewProps) => {
-  console.log({ publishDate });
+  console.log({ slug });
   return (
     <div>
       <div className="mb-5">

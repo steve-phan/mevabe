@@ -1,12 +1,19 @@
 import { IAuthor } from "../@types";
 import { ContentfulImage } from "./ContentfulImage";
 
-export const Avatar = ({ name, image }: Partial<IAuthor>) => {
+interface IAvatarProps {
+  name: string;
+  image: {
+    url: string;
+  };
+}
+
+export const Avatar = ({ name, image }: IAvatarProps) => {
   return (
     <div className="flex items-center">
       <div className="relative w-12 h-12 mr-4">
         <ContentfulImage
-          src={image?.url}
+          src={image.url}
           fill
           className="rounded-full"
           alt={name}

@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IBlogPost {
   title: string;
   slug: string;
@@ -20,4 +22,8 @@ export interface IAuthor {
   image: {
     url: string;
   };
+}
+
+export interface IChildrenProps {
+  children: ReactNode;
 }

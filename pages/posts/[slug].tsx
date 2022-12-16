@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import ErrorPage from "next/error";
-import {} from "next";
 
 import { Layout } from "../../libs/UI/Layout";
 import { Container } from "../../libs/UI/Container";

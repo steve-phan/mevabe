@@ -89,11 +89,10 @@ export async function getStaticPaths() {
   // const data = fs.readFileSync(`${rootDir}/allPosts.json`, "utf-8");
   // console.log({ data: allPosts });
   allPosts.forEach((post) => {
-    fs.writeFileSync(
-      `${rootDir}/${formatSlug(post?.slug)}.json`,
-      JSON.stringify(post),
-      "utf-8"
-    );
+    const postFile = `${rootDir}/${formatSlug(post?.slug)}.json`;
+    if (!fs.existsSync(postFile)) {
+      fs.writeFileSync(postFile, JSON.stringify(post), "utf-8");
+    }
   });
 
   const paths =

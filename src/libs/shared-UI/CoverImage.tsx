@@ -26,7 +26,7 @@ export const CoverImage = ({ url, alt, slug, title }: ICoverImageProps) => {
   );
 
   return (
-    <div className="sm:mx-0">
+    <>
       {slug ? (
         <Link href={`/posts/${slug}`} aria-label={title}>
           {image}
@@ -34,6 +34,6 @@ export const CoverImage = ({ url, alt, slug, title }: ICoverImageProps) => {
       ) : (
         image
       )}
-    </div>
+    </>
   );
 };

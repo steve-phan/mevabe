@@ -13,17 +13,13 @@ export const PostBody = ({ content }: { content: string }) => {
         <ReactMarkdown
           children={content}
           components={{
-            p: (node) => {
-              if (node?.children[0]?.type === "img") {
-                return (
-                  <CoverImage
-                    alt={node?.children[0]?.props?.alt || "mevebe website"}
-                    url={node?.children[0]?.props?.src || ""}
-                  />
-                );
-              }
-
-              return <p>{node?.children}</p>;
+            img: (node) => {
+              return (
+                <CoverImage
+                  alt={node?.alt || "mevebe website"}
+                  url={node?.src || ""}
+                />
+              );
             },
           }}
           remarkPlugins={[remarkGfm]}

@@ -3,7 +3,7 @@ import { useState } from "react";
 import cn from "classnames";
 
 export const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div
       className={cn(

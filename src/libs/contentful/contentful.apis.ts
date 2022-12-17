@@ -1,4 +1,4 @@
-import { GET_ALL_POSTS } from "./contentful.constants";
+import { GET_ALL_POSTS, GET_CATEGORY_POSTS } from "./contentful.constants";
 import { extractPost, extractPostsFromEntries } from "./contentful.utils";
 
 export const fetchGraphQL = async (query: string, preview = false) => {
@@ -46,6 +46,19 @@ export const getAllPostsWithSlug = async () => {
       blogPostCollection(where: { slug_exists: true }, order: publishDate_DESC) {
         items {
           ${GET_ALL_POSTS}
+        }
+      }
+    }`
+  );
+  return extractPostsFromEntries(entries);
+};
+
+export const getAllPostsWithCategory = async () => {
+  const entries = await fetchGraphQL(
+    `query {
+      blogPostCollection {
+        items {
+          ${GET_CATEGORY_POSTS}
         }
       }
     }`

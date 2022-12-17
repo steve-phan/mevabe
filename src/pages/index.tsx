@@ -10,6 +10,7 @@ import { HeroPost } from "libs/shared-UI/HeroPost";
 import { IBlogPost } from "libs/@types";
 import { Layout } from "components/Layout/Layout";
 import { MoreStories } from "components/MoreStories/MoreStories";
+import { useAppRoute } from "hooks/useAppRoute";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,8 @@ interface IHomeProps {
 export default function Home({ allPosts, preview }: IHomeProps) {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
+  const ctx = useAppRoute();
+  console.log({ ctx });
   return (
     <>
       <Layout>

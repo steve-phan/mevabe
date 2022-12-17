@@ -11,6 +11,7 @@ import { IBlogPost } from "libs/@types";
 import { Layout } from "components/Layout/Layout";
 import { PostHeader } from "components/PostHeader/PostHeader";
 import { MoreStories } from "components/MoreStories/MoreStories";
+import { useAppRoute } from "hooks/useAppRoute";
 
 interface IStaticProps {
   params: {
@@ -28,6 +29,8 @@ interface IPostProps {
 export default function Post({ post, morePosts, preview }: IPostProps) {
   const router = useRouter();
 
+  const ctx = useAppRoute();
+  console.log({ ctx });
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }

@@ -17,3 +17,9 @@ export const GET_ALL_POSTS = `
     url
   }
 `;
+
+export const GET_CATEGORY_POSTS = `
+  title
+  slug
+  category 
+`;

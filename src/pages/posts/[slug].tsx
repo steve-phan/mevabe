@@ -1,3 +1,6 @@
+import fs from "fs";
+import { promisify } from "util";
+
 import { useRouter } from "next/router";
 import Head from "next/head";
 import ErrorPage from "next/error";
@@ -11,6 +14,7 @@ import { IBlogPost } from "libs/@types";
 import { Layout } from "components/Layout/Layout";
 import { PostHeader } from "components/PostHeader/PostHeader";
 import { MoreStories } from "components/MoreStories/MoreStories";
+import { formatSlug } from "utils/fomatSlug";
 
 interface IStaticProps {
   params: {
@@ -77,7 +81,20 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
+  const rootDir = process.cwd() + "/src/libs/contentful/content";
+  const readFile = promisify(fs.readFileSync);
+  const stat = promisify(fs.stat);
+  const allPosts = (await getAllPostsWithSlug()) as IBlogPost[];
+
+  // const data = fs.readFileSync(`${rootDir}/allPosts.json`, "utf-8");
+  // console.log({ data: allPosts });
+  allPosts.forEach((post) => {
+    fs.writeFileSync(
+      `${rootDir}/${formatSlug(post?.slug)}.json`,
+      JSON.stringify(post),
+      "utf-8"
+    );
+  });
 
   const paths =
     allPosts?.map(({ slug }: { slug: string }) => `/posts/${slug}`) ?? [];

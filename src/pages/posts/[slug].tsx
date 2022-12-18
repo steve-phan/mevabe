@@ -30,7 +30,6 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
   const router = useRouter();
 
   const ctx = useAppRoute();
-  console.log({ ctx });
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }

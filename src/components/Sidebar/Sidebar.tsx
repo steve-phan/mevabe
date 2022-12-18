@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import cn from "classnames";
+import { useAppRoute } from "hooks/useAppRoute";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const appRoutes = useAppRoute();
   return (
     <div
       className={cn(
@@ -15,6 +18,14 @@ export const Sidebar = () => {
         <Link href="/" className="hover:underline">
           Sidebar
         </Link>
+
+        <ul>
+          {appRoutes.map((route, index) => {
+            return (
+              <li key={`${route?.category}-${index}`}>{route?.category}</li>
+            );
+          })}
+        </ul>
       </nav>
     </div>
   );

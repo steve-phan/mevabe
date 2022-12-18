@@ -1,6 +1,8 @@
 import { useContext, createContext } from "react";
 import { useRouter } from "next/router";
 
+import { capitalizeFirstLetter } from "utils/capitalizeFirstLetter";
+
 export type RouteTag =
   | "thủ tục đức"
   | "visa đức"
@@ -39,41 +41,46 @@ export const useAppRoute = (rootRoute?: RouteItem) => {
   const sidebarContext = useContext(SidebarContext);
   const routeTree = rootRoute || sidebarContext;
   const router = useRouter();
-
   const cleanedPath = router.asPath.split(/[\?\#]/)[0];
-  return {
-    ...getAppRoutes(cleanedPath, routeTree),
-  };
+  const appRoutes = getAppRoutes(cleanedPath, routeTree);
+  return appRoutes;
 };
 
 export const SidebarContext = createContext<RouteItem>({ title: "root" });
+
+interface IAppRoutes {
+  category: string;
+  posts: {
+    title: string;
+    slug: string;
+  };
+}
 
 function getAppRoutes(
   searchPath: string,
   currentRoute: RouteItem,
   ctx: RouteMeta = {}
-): RouteMeta {
+): IAppRoutes[] {
   const { routes } = currentRoute;
+  const categoryMapping = {} as Record<any, any>;
 
-  if (ctx.route && !ctx.nextRoute) {
-    ctx.nextRoute = currentRoute;
+  if (routes) {
+    routes.forEach((route) => {
+      const newRoute = {
+        title: route.title,
+        slug: route.slug,
+      };
+      const oldRoutes = categoryMapping[route?.category];
+      categoryMapping[route?.category] = Boolean(oldRoutes)
+        ? [...oldRoutes, newRoute]
+        : [newRoute];
+    });
   }
 
-  if (currentRoute.path === searchPath) {
-    ctx.route = currentRoute;
-  }
-
-  if (!ctx.route) {
-    ctx.prevRoute = currentRoute;
-  }
-
-  if (!routes) {
-    return ctx;
-  }
-
-  for (const route of routes) {
-    getAppRoutes(searchPath, route, ctx);
-  }
-
-  return ctx;
+  return Object.entries(categoryMapping).map(([category, posts]) => {
+    return {
+      category: capitalizeFirstLetter(category),
+      posts,
+    };
+  });
 }

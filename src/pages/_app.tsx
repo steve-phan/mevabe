@@ -23,7 +23,7 @@ CustomApp.getInitialProps = async (appContext: AppContext) => {
   const allPostsWithCategory = ((await getAllPostsWithCategory()) ??
     []) as IPostCategory[];
 
-  if (initialSideBarRoute?.routes) {
+  if (initialSideBarRoute?.routes?.length === 0) {
     initialSideBarRoute?.routes.push(...allPostsWithCategory);
   }
 

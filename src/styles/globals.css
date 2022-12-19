@@ -2,16 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .grid-cols-only-content {
-    grid-template-columns: auto;
+@layer base {
+  .scrolling-gpu {
+    transform: translateZ(0);
   }
 
-  .grid-cols-sidebar-content {
-    grid-template-columns: 20rem auto;
+  html {
+    color-scheme: light;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .grid-cols-sidebar-content-toc {
-    grid-template-columns: 20rem auto 20rem;
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html .no-bg-scrollbar {
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+  html.dark .no-bg-scrollbar {
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  html .no-bg-scrollbar::-webkit-scrollbar,
+  html .no-bg-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  html .no-bg-scrollbar:hover::-webkit-scrollbar-thumb,
+  html .no-bg-scrollbar:focus::-webkit-scrollbar-thumb,
+  html .no-bg-scrollbar:focus-within::-webkit-scrollbar-thumb,
+  html .no-bg-scrollbar:active::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 4px solid transparent;
+    background-clip: content-box;
+    border-radius: 10px;
+  }
+  html .no-bg-scrollbar::-webkit-scrollbar-thumb:hover,
+  html .no-bg-scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: rgba(0, 0, 0, 0.35) !important;
+  }
+  html.dark .no-bg-scrollbar:hover::-webkit-scrollbar-thumb,
+  html.dark .no-bg-scrollbar:focus::-webkit-scrollbar-thumb,
+  html.dark .no-bg-scrollbar:focus-within::-webkit-scrollbar-thumb,
+  html.dark .no-bg-scrollbar:active::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  html.dark .no-bg-scrollbar::-webkit-scrollbar-thumb:hover,
+  html.dark .no-bg-scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: rgba(255, 255, 255, 0.35) !important;
+  }
+
+  @layer utilities {
+    .grid-cols-only-content {
+      grid-template-columns: auto;
+    }
+
+    .grid-cols-sidebar-content {
+      grid-template-columns: 20rem auto;
+    }
+
+    .grid-cols-sidebar-content-toc {
+      grid-template-columns: 20rem auto 20rem;
+    }
   }
 }

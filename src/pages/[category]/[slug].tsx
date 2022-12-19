@@ -67,6 +67,7 @@ export async function getStaticProps({
   params,
   preview = false,
 }: IStaticProps) {
+  console.log({ params });
   const data = await getPostAndMorePosts(params.slug, preview);
 
   return {

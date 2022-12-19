@@ -38,7 +38,7 @@ export const Sidebar = () => {
             {isOpen ? <IconClose /> : <IconHamburger />}
           </button>
           <NextLink href="/">
-            <div className="inline-flex text-lg font-bold items-center text-red-400 dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap">
+            <div className="inline-flex text-lg font-bold items-center text-red-400 dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap h-10 my-2">
               MeVaBe
             </div>
           </NextLink>

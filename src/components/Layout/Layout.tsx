@@ -12,8 +12,8 @@ export const Layout = ({ children }: IChildrenProps) => {
           <Sidebar />
         </div>
         {/* Add ml when screen is lg because of sidebar's scrollbar */}
-        <div className="min-h-screen bg-pink-200 lg:ml-4">
-          <article className="break-words">{children}</article>
+        <div className="flex flex-col min-h-screen bg-pink-200 lg:ml-4">
+          <article className="break-words grow">{children}</article>
           <Footer />
         </div>
         <div className="hidden lg:max-w-xs 2xl:block bg-red-400">

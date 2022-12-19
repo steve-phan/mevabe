@@ -11,7 +11,8 @@ export const Layout = ({ children }: IChildrenProps) => {
         <div className="fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none z-50 bg-gray-400">
           <Sidebar />
         </div>
-        <div className="min-h-screen bg-pink-200">
+        {/* Add ml when screen is lg because of sidebar's scrollbar */}
+        <div className="min-h-screen bg-pink-200 lg:ml-4">
           <article className="break-words">{children}</article>
           <Footer />
         </div>

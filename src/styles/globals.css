@@ -66,4 +66,12 @@
       grid-template-columns: 20rem auto 20rem;
     }
   }
+  html .bg-wash {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  }
+  html .text-link {
+    --tw-text-opacity: 1;
+    color: rgb(8 126 164 / var(--tw-text-opacity));
+  }
 }

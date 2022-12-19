@@ -53,7 +53,7 @@ interface IAppRoutes {
   posts: {
     title: string;
     slug: string;
-  };
+  }[];
 }
 
 function getAppRoutes(

@@ -1,16 +1,15 @@
 import NextLink from "next/link";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import cn from "classnames";
 
 import { useAppRoute } from "hooks/useAppRoute";
 import { useSideBarScroll } from "hooks/useSideBarScroll";
 import { IconHamburger, IconClose } from "Icons";
+import { SidebarRoutes } from "./SidebarRoutes";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { scrollParentRef } = useSideBarScroll({ isOpen });
-
-  const appRoutes = useAppRoute();
 
   return (
     <div
@@ -59,13 +58,9 @@ export const Sidebar = () => {
             style={{ "--bg-opacity": ".2" } as React.CSSProperties}
             className="w-full lg:h-auto grow pr-0 lg:pr-5 pt-6 lg:py-6 md:pt-4 lg:pt-4 scrolling-touch scrolling-gpu"
           >
-            <ul>
-              {appRoutes.map((route, index) => {
-                return (
-                  <li key={`${route?.category}-${index}`}>{route?.category}</li>
-                );
-              })}
-            </ul>
+            <Suspense fallback={null}>
+              <SidebarRoutes />
+            </Suspense>
           </nav>
         </aside>
       </div>

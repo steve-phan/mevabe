@@ -8,6 +8,7 @@ export interface IBlogPost {
   publishDate: string;
   author: IAuthor;
   heroImage: IHeroImage;
+  category: string;
 }
 
 export interface IHeroImage {

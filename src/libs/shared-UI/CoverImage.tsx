@@ -8,15 +8,26 @@ interface ICoverImageProps {
   url: string;
   slug?: string;
   title?: string;
+  width?: number;
+  height?: number;
 }
 
-export const CoverImage = ({ url, alt, slug, title }: ICoverImageProps) => {
+export const CoverImage = ({
+  url,
+  alt,
+  slug,
+  title,
+  width,
+  height,
+}: ICoverImageProps) => {
   const image = (
     <ContentfulImage
-      width={680}
-      height={340}
+      width={width || 680}
+      height={height || 340}
       alt={alt}
       className={cn(
+        "h-full",
+        "w-full",
         "mx-auto",
         "shadow-small",
         "hover:shadow-medium transition-shadow duration-200"

@@ -1,6 +1,7 @@
 export const GET_ALL_POSTS = `
   title
   slug
+  category
   description
   body
   publishDate

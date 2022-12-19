@@ -1,8 +1,11 @@
+import Link from "next/link";
+
 import { IBlogPost } from "libs/@types";
 import { Avatar } from "libs/shared-UI/Avatar";
 import { CoverImage } from "libs/shared-UI/CoverImage";
 import { DateComponent } from "libs/shared-UI/DateComponent";
-import Link from "next/link";
+
+import { formatSlug } from "utils/fomatSlug";
 
 type TPostPreviewProps = Omit<Omit<IBlogPost, "description">, "body">;
 
@@ -12,22 +15,27 @@ export const PostPreview = ({
   publishDate,
   author,
   slug,
+  category,
 }: TPostPreviewProps) => {
   return (
-    <div>
-      <div className="mb-5">
-        <CoverImage title={title} alt={slug} url={heroImage?.url} />
+    <div className="flex flex-col">
+      <div className="mb-5 h-64">
+        <CoverImage title={title} alt={slug} url={heroImage?.url} width={400} />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link href={`/posts/${slug}`} className="hover:underline">
+      <h3 className="text-2xl mb-3 leading-snug flex-grow">
+        <Link
+          href={`/${formatSlug(category)}/${slug}`}
+          className="hover:underline"
+        >
           {title}
         </Link>
       </h3>
-      <div className="text-lg mb-4">
-        <DateComponent dateString={publishDate} />
+      <div className="max-w-2xl justify-items-center">
+        <div className="flex items-center  mb-6">
+          <DateComponent dateString={publishDate} />
+          {author && <Avatar name={author.name} image={author.image} />}
+        </div>
       </div>
-      {/* <p className="text-lg leading-relaxed mb-4">{excerpt}</p> */}
-      {author && <Avatar name={author.name} image={author?.image} />}
     </div>
   );
 };

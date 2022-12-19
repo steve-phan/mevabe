@@ -4,19 +4,13 @@ import { Inter } from "@next/font/google";
 import NextLink from "next/link";
 
 import styles from "../styles/Home.module.css";
-import {
-  getAllBlogPosts,
-  getAllPostsWithCategory,
-  getAllPostsWithSlug,
-} from "libs/contentful";
-import { Container } from "libs/shared-UI/Container";
-import Intro from "components/Intro/Intro";
-import { HeroPost } from "libs/shared-UI/HeroPost";
+import { getAllPostsWithCategory } from "libs/contentful";
+
 import { IBlogPost } from "libs/@types";
 import { Layout } from "components/Layout/Layout";
-import { MoreStories } from "components/MoreStories/MoreStories";
-import { useAppRoute } from "hooks/useAppRoute";
 import { formatSlug } from "utils/fomatSlug";
+import { useRouter } from "next/router";
+import { PostTitle } from "libs/shared-UI/PostTitle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,15 +30,16 @@ export default function Category({
   posts: TAllPostWithCategory[];
   category: string;
 }) {
-  // const heroPost = allPosts[0];
-  // const morePosts = allPosts.slice(1);
-  // const ctx = useAppRoute();
+  const router = useRouter();
 
+  if (router.isFallback) {
+    return <PostTitle>404</PostTitle>;
+  }
   return (
     <>
       <Layout>
         <ul>
-          {posts.map((post, index) => {
+          {posts?.map((post, index) => {
             return (
               <NextLink
                 key={`${post.slug}${index}`}

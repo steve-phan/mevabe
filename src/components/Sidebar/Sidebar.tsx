@@ -1,15 +1,22 @@
 import NextLink from "next/link";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import cn from "classnames";
 
-import { useAppRoute } from "hooks/useAppRoute";
 import { useSideBarScroll } from "hooks/useSideBarScroll";
 import { IconHamburger, IconClose } from "Icons";
 import { SidebarRoutes } from "./SidebarRoutes";
+import { useRouter } from "next/router";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { asPath } = useRouter();
   const { scrollParentRef } = useSideBarScroll({ isOpen });
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  }, [asPath]);
 
   return (
     <div
@@ -31,16 +38,11 @@ export const Sidebar = () => {
             {isOpen ? <IconClose /> : <IconHamburger />}
           </button>
           <NextLink href="/">
-            <div className="inline-flex text-l font-normal items-center text-primary dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap">
-              <div className="text-sm mr-2 w-8 h-8 text-link dark:text-link-dark" />
+            <div className="inline-flex text-lg font-bold items-center text-red-400 dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap">
               MeVaBe
             </div>
           </NextLink>
         </div>
-
-        <NextLink href="/" className="hover:underline">
-          Sidebar
-        </NextLink>
       </nav>
 
       <div

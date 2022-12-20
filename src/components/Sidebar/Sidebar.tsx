@@ -16,7 +16,7 @@ export const Sidebar = () => {
     if (isOpen) {
       setIsOpen(false);
     }
-  }, [asPath]);
+  }, [asPath, isOpen]);
 
   return (
     <div

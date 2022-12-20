@@ -1,16 +1,13 @@
-import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
 import NextLink from "next/link";
+import ErrorPage from "next/error";
 
-import styles from "../styles/Home.module.css";
 import { getAllPostsWithCategory } from "libs/contentful";
 
 import { IBlogPost } from "libs/@types";
 import { Layout } from "components/Layout/Layout";
 import { formatSlug } from "utils/fomatSlug";
 import { useRouter } from "next/router";
-import { PostTitle } from "libs/shared-UI/PostTitle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,9 +29,10 @@ export default function Category({
 }) {
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <PostTitle>404</PostTitle>;
+  if (!router.isFallback && !posts) {
+    return <ErrorPage statusCode={404} />;
   }
+
   return (
     <>
       <Layout>
@@ -45,7 +43,7 @@ export default function Category({
                 key={`${post.slug}${index}`}
                 href={`${category}/${post.slug}`}
               >
-                {post?.title}{" "}
+                {post?.title}
               </NextLink>
             );
           })}
@@ -83,6 +81,6 @@ export async function getStaticPaths() {
     allPostsWithCategory.map((post) => `/${formatSlug(post?.category)}`) || [];
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }

@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import Head from "next/head";
 import ErrorPage from "next/error";
 
 import { Container } from "libs/shared-UI/Container";
@@ -11,7 +10,7 @@ import { IBlogPost } from "libs/@types";
 import { Layout } from "components/Layout/Layout";
 import { PostHeader } from "components/PostHeader/PostHeader";
 import { MoreStories } from "components/MoreStories/MoreStories";
-import { useAppRoute } from "hooks/useAppRoute";
+import { formatSlug } from "utils/fomatSlug";
 
 interface IStaticProps {
   params: {
@@ -29,7 +28,6 @@ interface IPostProps {
 export default function Post({ post, morePosts, preview }: IPostProps) {
   const router = useRouter();
 
-  const ctx = useAppRoute();
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
   }
@@ -48,6 +46,7 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
                 publishDate={post.publishDate}
                 author={post.author}
                 slug={post.slug}
+                category={post.slug}
               />
 
               <PostBody content={post.body} />
@@ -82,10 +81,13 @@ export async function getStaticPaths() {
   const allPosts = (await getAllPostsWithSlug()) as IBlogPost[];
 
   const paths =
-    allPosts?.map(({ slug }: { slug: string }) => `/posts/${slug}`) ?? [];
+    allPosts?.map(
+      ({ slug, category }: { slug: string; category: string }) =>
+        `/${formatSlug(category)}/${slug}`
+    ) ?? [];
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }

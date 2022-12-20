@@ -10,6 +10,7 @@ export const PostHeader = ({
   publishDate,
   author,
   slug,
+  category,
 }: Omit<IBlogPost, "description" | "body">) => {
   return (
     <>
@@ -22,7 +23,12 @@ export const PostHeader = ({
       </div>
 
       <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} url={heroImage.url} alt={slug} />
+        <CoverImage
+          category={category}
+          title={title}
+          url={heroImage.url}
+          alt={slug}
+        />
       </div>
     </>
   );

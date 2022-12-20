@@ -2,6 +2,7 @@ import Link from "next/link";
 import cn from "classnames";
 
 import { ContentfulImage } from "./ContentfulImage";
+import { formatSlug } from "utils/fomatSlug";
 
 interface ICoverImageProps {
   alt: string;
@@ -10,6 +11,7 @@ interface ICoverImageProps {
   title?: string;
   width?: number;
   height?: number;
+  category?: string;
 }
 
 export const CoverImage = ({
@@ -19,6 +21,7 @@ export const CoverImage = ({
   title,
   width,
   height,
+  category,
 }: ICoverImageProps) => {
   const image = (
     <ContentfulImage
@@ -38,8 +41,8 @@ export const CoverImage = ({
 
   return (
     <>
-      {slug ? (
-        <Link href={`/posts/${slug}`} aria-label={title}>
+      {slug && category ? (
+        <Link href={`/${formatSlug(category)}/${slug}`} aria-label={title}>
           {image}
         </Link>
       ) : (

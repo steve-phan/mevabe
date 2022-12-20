@@ -20,7 +20,13 @@ export const PostPreview = ({
   return (
     <div className="flex flex-col">
       <div className="mb-5 h-64">
-        <CoverImage title={title} alt={slug} url={heroImage?.url} width={400} />
+        <CoverImage
+          category={category}
+          title={title}
+          alt={slug}
+          url={heroImage?.url}
+          width={400}
+        />
       </div>
       <h3 className="text-2xl mb-3 leading-snug flex-grow">
         <Link

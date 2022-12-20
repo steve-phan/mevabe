@@ -35,28 +35,20 @@ export default function Post({ post, morePosts, preview }: IPostProps) {
   return (
     <Layout>
       <Container>
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article>
-              <PostHeader
-                title={post.title}
-                heroImage={post.heroImage}
-                publishDate={post.publishDate}
-                author={post.author}
-                slug={post.slug}
-                category={post.slug}
-              />
+        <article>
+          <PostHeader
+            title={post.title}
+            heroImage={post.heroImage}
+            publishDate={post.publishDate}
+            author={post.author}
+            slug={post.slug}
+            category={post.slug}
+          />
 
-              <PostBody content={post.body} />
-            </article>
-            <SectionSeparator />
-            {morePosts && morePosts.length > 0 && (
-              <MoreStories posts={morePosts} />
-            )}
-          </>
-        )}
+          <PostBody content={post.body} />
+        </article>
+        <SectionSeparator />
+        {morePosts && morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>
   );

@@ -23,11 +23,13 @@ To learn more about Contentful, take a look at the following resources:
 - [Contentful and Next.js](https://www.contentful.com/nextjs-starter-guide/) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Deploy on Gatsby
+## Deploy on Netlify
 
 Check out [The better runtime for Next.js](https://www.netlify.com/with/nextjs/) for more details.
 
-## Styles?
+## Styles
+
+[Tailwind CSS](https://tailwindcss.com/)
 
 ## Dev notes
 

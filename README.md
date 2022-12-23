@@ -1,4 +1,6 @@
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=steve-phan_mevabe)](https://sonarcloud.io/summary/new_code?id=steve-phan_mevabe)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=steve-phan_mevabe&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=steve-phan_mevabe)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2c1eb767-dbb0-4479-92e4-54a30a71d2aa/deploy-status)](https://app.netlify.com/sites/mevabede/deploys)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

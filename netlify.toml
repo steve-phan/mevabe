@@ -4,3 +4,9 @@
      [plugins.inputs]
       # allowed values: electron, chromium
       browser = "electron"
+
+      [plugins.inputs.preBuild]
+      enable = true
+      start = 'yarn dev'
+      wait-on = 'http://localhost:3000'
+      wait-on-timeout = '30' # seconds

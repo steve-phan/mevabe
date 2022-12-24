@@ -4,6 +4,7 @@
      [plugins.inputs]
       # allowed values: electron, chromium
       browser = "electron"
+      configFile = "cypress.config.ts"
 
       [plugins.inputs.preBuild]
       enable = true

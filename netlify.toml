@@ -1,3 +1,6 @@
 [[plugins]]
   # runs Cypress tests against the deployed URL
   package = "netlify-plugin-cypress"
+     [plugins.inputs]
+      # allowed values: electron, chromium
+      browser = "electron"

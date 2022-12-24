@@ -40,3 +40,8 @@ next-env.d.ts
 
 # Sentry
 .sentryclirc
+
+
+# cypress
+
+/cypress/e2e/examples

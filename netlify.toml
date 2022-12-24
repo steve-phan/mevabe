@@ -5,9 +5,9 @@
       # allowed values: electron, chromium
       browser = "electron"
       configFile = "cypress.config.ts"
-      spec = "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}"
 
       [plugins.inputs.preBuild]
+      spec = "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}"
       enable = true
       start = 'yarn dev'
       wait-on = 'http://localhost:3000'

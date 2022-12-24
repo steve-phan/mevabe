@@ -34,3 +34,4 @@ Check out [The better runtime for Next.js](https://www.netlify.com/with/nextjs/)
 ## Dev notes
 
 [How do I clone a subdirectory only of a Git repository?](https://stackoverflow.com/a/73254328)
+[Run Cypress on preBuild event Netlify](https://github.com/cypress-io/netlify-plugin-cypress#readme)

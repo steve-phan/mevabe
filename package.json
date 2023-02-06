@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress:test": "cypress test"
   },
   "dependencies": {
     "@next/font": "13.0.7",

@@ -1,11 +1,18 @@
 import type { AppProps, AppContext } from "next/app";
 import App from "next/app";
+import { Montserrat, Roboto } from "@next/font/google";
 
 import { getAllPostsWithCategory } from "libs/contentful";
 import { initialSideBarRoute } from "libs/Providers/AppRouteProvider/AppRouteProvider";
 import { IPostCategory, RouteItem, SidebarContext } from "hooks/useAppRoute";
 
 import "../styles/globals.css";
+
+const montserrat = Roboto({
+  subsets: ["vietnamese", "latin"],
+  display: "optional",
+  weight: ["100", "300", "500"],
+});
 
 const CustomApp = ({
   Component,
@@ -14,7 +21,9 @@ const CustomApp = ({
 }: AppProps & { sideBarRoute: RouteItem }) => {
   return (
     <SidebarContext.Provider value={sideBarRoute || initialSideBarRoute}>
-      <Component {...pageProps} />
+      <main className={montserrat.className}>
+        <Component {...pageProps} />
+      </main>
     </SidebarContext.Provider>
   );
 };

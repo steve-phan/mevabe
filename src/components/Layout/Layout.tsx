@@ -3,11 +3,12 @@ import { Sidebar } from "components/Sidebar/Sidebar";
 import { ScrollTopIcon } from "components/ScrollTopButton/ScrollTopIcon";
 import { Meta } from "components/Meta/Meta";
 import { IChildrenProps } from "libs/@types";
+import { SEO } from "components/SEO/SEO";
 
 export const Layout = ({ children }: IChildrenProps) => {
   return (
     <>
-      <Meta />
+      <SEO />
       <div className="grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc">
         <div className="fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none z-50 bg-gray-400">
           <Sidebar />

@@ -1,11 +1,14 @@
+import { useRouter } from "next/router";
 import NextLink from "next/link";
+import Image from "next/image";
 import { Suspense, useEffect, useState } from "react";
 import cn from "classnames";
 
 import { useSideBarScroll } from "hooks/useSideBarScroll";
 import { IconHamburger, IconClose } from "Icons";
+import { defaultSEO } from "components/SEO/SEO.config";
+
 import { SidebarRoutes } from "./SidebarRoutes";
-import { useRouter } from "next/router";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +42,12 @@ export const Sidebar = () => {
           </button>
           <NextLink href="/">
             <div className="inline-flex text-lg font-bold items-center text-red-400 dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap h-10 my-2">
-              MeVaBe
+              <Image
+                src="/logo.png"
+                alt={defaultSEO.title}
+                width={50}
+                height={50}
+              />
             </div>
           </NextLink>
         </div>

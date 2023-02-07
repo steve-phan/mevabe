@@ -1,6 +1,6 @@
 import type { AppProps, AppContext } from "next/app";
 import App from "next/app";
-import { Montserrat, Roboto } from "@next/font/google";
+import { Roboto } from "@next/font/google";
 
 import { getAllPostsWithCategory } from "libs/contentful";
 import { initialSideBarRoute } from "libs/Providers/AppRouteProvider/AppRouteProvider";

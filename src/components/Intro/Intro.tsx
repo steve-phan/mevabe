@@ -4,7 +4,7 @@ export default function Intro() {
       <h1 className="font-bold text-2xl md:text-4xl  my-8">
         Thông tin Luật Pháp và cuộc sống tại Đức
       </h1>
-      <p>
+      <p className="font-normal text-lg">
         Chào mừng bạn đến với website cung cấp thông tin về luật pháp và thủ tục
         cuộc sống tại Đức dành cho người Việt Nam. Trang web này sẽ giúp bạn
         hiểu rõ về những quy định và hướng dẫn cần thiết cho việc sống và làm

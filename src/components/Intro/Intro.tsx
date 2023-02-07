@@ -1,7 +1,7 @@
 export default function Intro() {
   return (
     <section id="intro" className="text-center mb-8">
-      <h1 className="font-bold text-2xl md:text-4xl  my-8">
+      <h1 className="font-bold text-2xl md:text-3xl  my-8">
         Thông tin Luật Pháp và cuộc sống tại Đức
       </h1>
       <p className="font-normal text-lg">

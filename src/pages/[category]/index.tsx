@@ -2,7 +2,6 @@ import NextLink from "next/link";
 import ErrorPage from "next/error";
 
 import { getAllPostsWithCategory } from "libs/contentful";
-
 import { IBlogPost } from "libs/@types";
 import { formatSlug } from "utils/fomatSlug";
 import { useRouter } from "next/router";

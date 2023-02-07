@@ -6,7 +6,12 @@ module.exports = {
     "./src/libs/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "box-title": "#F15A22",
+        "box-bg": "#fff3e6",
+      },
+    },
   },
   plugins: [],
 };

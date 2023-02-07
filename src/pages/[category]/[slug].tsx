@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 
 import { Container } from "libs/shared-UI/Container";
-import { PostTitle } from "libs/shared-UI/PostTitle";
 import { PostBody } from "libs/shared-UI/PostBody";
 import { SectionSeparator } from "libs/shared-UI/SectionSeparator";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "libs/contentful";

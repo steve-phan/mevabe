@@ -13,7 +13,7 @@ export const SidebarRoutes = () => {
       {appRoutes.map((route, index) => {
         return (
           <li key={`${route?.category}-${index}`}>
-            <div className="cursor-pointer p-2 pr-2 pl-5 w-full font-bold text-link">
+            <div className="cursor-pointer p-2 pr-2 pl-5 w-full font-bold text-box-title">
               <NextLink
                 key={`${route?.category}${index}`}
                 href={`/${formatSlug(route.category)}`}

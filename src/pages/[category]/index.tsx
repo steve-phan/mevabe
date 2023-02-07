@@ -1,15 +1,11 @@
-import { Inter } from "@next/font/google";
 import NextLink from "next/link";
 import ErrorPage from "next/error";
 
 import { getAllPostsWithCategory } from "libs/contentful";
 
 import { IBlogPost } from "libs/@types";
-import { Layout } from "components/Layout/Layout";
 import { formatSlug } from "utils/fomatSlug";
 import { useRouter } from "next/router";
-
-const inter = Inter({ subsets: ["latin"] });
 
 interface IHomeProps {
   allPosts: IBlogPost[];
@@ -35,20 +31,18 @@ export default function Category({
 
   return (
     <>
-      <Layout>
-        <ul>
-          {posts?.map((post, index) => {
-            return (
-              <NextLink
-                key={`${post.slug}${index}`}
-                href={`${category}/${post.slug}`}
-              >
-                {post?.title}
-              </NextLink>
-            );
-          })}
-        </ul>
-      </Layout>
+      <ul>
+        {posts?.map((post, index) => {
+          return (
+            <NextLink
+              key={`${post.slug}${index}`}
+              href={`${category}/${post.slug}`}
+            >
+              {post?.title}
+            </NextLink>
+          );
+        })}
+      </ul>
     </>
   );
 }

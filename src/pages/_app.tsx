@@ -5,6 +5,7 @@ import { Roboto } from "@next/font/google";
 import { getAllPostsWithCategory } from "libs/contentful";
 import { initialSideBarRoute } from "libs/Providers/AppRouteProvider/AppRouteProvider";
 import { IPostCategory, RouteItem, SidebarContext } from "hooks/useAppRoute";
+import { Layout } from "components/Layout/Layout";
 
 import "../styles/globals.css";
 
@@ -21,9 +22,11 @@ const CustomApp = ({
 }: AppProps & { sideBarRoute: RouteItem }) => {
   return (
     <SidebarContext.Provider value={sideBarRoute || initialSideBarRoute}>
-      <main className={montserrat.className}>
-        <Component {...pageProps} />
-      </main>
+      <Layout>
+        <main className={montserrat.className}>
+          <Component {...pageProps} />
+        </main>
+      </Layout>
     </SidebarContext.Provider>
   );
 };

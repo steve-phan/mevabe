@@ -1,9 +1,9 @@
 import { Footer } from "components/Footer/Footer";
 import { Sidebar } from "components/Sidebar/Sidebar";
 import { ScrollTopIcon } from "components/ScrollTopButton/ScrollTopIcon";
-import { Meta } from "components/Meta/Meta";
 import { IChildrenProps } from "libs/@types";
 import { SEO } from "components/SEO/SEO";
+import { NewestStories } from "components/NewestStories/NewestStories";
 
 export const Layout = ({ children }: IChildrenProps) => {
   return (
@@ -23,8 +23,13 @@ export const Layout = ({ children }: IChildrenProps) => {
           <ScrollTopIcon />
           <Footer />
         </div>
-        <div className="hidden lg:max-w-xs 2xl:block bg-red-400">
-          <h1>Toc component</h1>
+        <div className="hidden lg:max-w-xs 2xl:block border-l">
+          <div className="fixed lg:max-w-xs w-full right-0 top-0 bottom-0">
+            <h1 className="text-center py-3 text-lg font-bold border-b">
+              Các bài đăng mới nhất
+            </h1>
+            <NewestStories />
+          </div>
         </div>
       </div>
     </>

@@ -6,7 +6,7 @@ import { format } from "path";
 import { formatSlug } from "utils/fomatSlug";
 
 export const SidebarRoutes = () => {
-  const appRoutes = useAppRoute();
+  const { appRoutes } = useAppRoute();
 
   return (
     <ul>

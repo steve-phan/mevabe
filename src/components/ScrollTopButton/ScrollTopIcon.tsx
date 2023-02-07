@@ -33,7 +33,7 @@ export const ScrollTopIcon = () => {
     <div
       role="tooltip"
       className={cx(
-        "transition-200 scroll-top",
+        "transition-200 scroll-top z-50",
         show ? "opacity-100" : "opacity-0"
       )}
     >

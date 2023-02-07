@@ -15,7 +15,7 @@ interface IHomeProps {
 export default function Home({ allPosts, preview }: IHomeProps) {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
-  const ctx = useAppRoute();
+  // const ctx = useAppRoute();
 
   return (
     <>

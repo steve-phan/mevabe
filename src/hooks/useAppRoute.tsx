@@ -43,7 +43,7 @@ export const useAppRoute = (rootRoute?: RouteItem) => {
   const router = useRouter();
   const cleanedPath = router.asPath.split(/[\?\#]/)[0];
   const appRoutes = getAppRoutes(cleanedPath, routeTree);
-  return appRoutes;
+  return { appRoutes, routes: routeTree?.routes };
 };
 
 export const SidebarContext = createContext<RouteItem>({ title: "root" });

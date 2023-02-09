@@ -9,7 +9,7 @@ import { Layout } from "components/Layout/Layout";
 
 import "../styles/globals.css";
 
-const montserrat = Roboto({
+const roboto = Roboto({
   subsets: ["vietnamese", "latin"],
   display: "optional",
   weight: ["100", "300", "500"],
@@ -23,7 +23,7 @@ const CustomApp = ({
   return (
     <SidebarContext.Provider value={sideBarRoute || initialSideBarRoute}>
       <Layout>
-        <main className={montserrat.className}>
+        <main className={roboto.className}>
           <Component {...pageProps} />
         </main>
       </Layout>

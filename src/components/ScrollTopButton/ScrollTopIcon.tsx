@@ -39,7 +39,9 @@ export const ScrollTopIcon = () => {
     >
       <button
         onClick={onClick}
-        className={cx("circle border-0")}
+        className={cx(
+          "circle border-0 flex items-center justify-center bg-primary"
+        )}
         style={{ width: 40, height: 40 }}
       >
         <IconToTop />

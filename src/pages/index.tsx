@@ -1,5 +1,5 @@
 import { Container } from "libs/shared-UI/Container";
-import Intro from "components/Intro/Intro";
+import { Intro } from "components/Intro/Intro";
 import { IBlogPost } from "libs/@types";
 import { CategoriesSection } from "components/CategoriesSection/CategoriesSection";
 
@@ -14,8 +14,8 @@ export default function Home() {
     <>
       <main className={styles.main}>
         <Container>
-          <CategoriesSection />
           <Intro />
+          <CategoriesSection />
         </Container>
       </main>
     </>

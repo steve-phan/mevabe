@@ -1,12 +1,9 @@
 import { useRouter } from "next/router";
-import NextLink from "next/link";
-import Image from "next/image";
 import { Suspense, useEffect, useState } from "react";
 import cn from "classnames";
 
 import { useSideBarScroll } from "hooks/useSideBarScroll";
 import { IconHamburger, IconClose } from "Icons";
-import { defaultSEO } from "components/SEO/SEO.config";
 
 import { SidebarRoutes } from "./SidebarRoutes";
 
@@ -22,27 +19,23 @@ export const Sidebar = () => {
   }, [asPath]);
 
   return (
-    <div
-      className={cn(
-        "w-10 h-10 flex items-center justify-center",
-        isOpen && "h-screen"
-      )}
-    >
-      <nav className="bg-white">
-        <div className="xl:w-full xl:max-w-xs flex items-center">
-          <button
-            type="button"
-            aria-label="Menu"
-            onClick={() => setIsOpen(!isOpen)}
-            className={cn("flex lg:hidden items-center h-full text-primary", {
-              "mr-0": isOpen,
-            })}
-          >
-            {isOpen ? <IconClose /> : <IconHamburger />}
-          </button>
-        </div>
-      </nav>
-
+    <>
+      <div className={cn("w-10 h-10 flex items-center justify-center")}>
+        <nav className="bg-white">
+          <div className="xl:w-full xl:max-w-xs flex items-center">
+            <button
+              type="button"
+              aria-label="Menu"
+              onClick={() => setIsOpen(!isOpen)}
+              className={cn("flex lg:hidden items-center h-full text-primary", {
+                "mr-0": isOpen,
+              })}
+            >
+              {isOpen ? <IconClose /> : <IconHamburger />}
+            </button>
+          </div>
+        </nav>
+      </div>
       {isOpen && (
         <div
           ref={scrollParentRef}
@@ -66,6 +59,6 @@ export const Sidebar = () => {
           </aside>
         </div>
       )}
-    </div>
+    </>
   );
 };

@@ -18,10 +18,8 @@ export const SidebarRoutes = () => {
 
   const handleCategoryOpen = (index: number) => {
     const activeIndex = index === categoryOpen.activeIndex ? null : index;
-    console.log({ activeIndex, index, categoryOpen });
     setCategoryOpen({ activeIndex });
   };
-  console.log({ categoryOpen });
   return (
     <ul>
       {appRoutes.map((route, outerIndex) => {

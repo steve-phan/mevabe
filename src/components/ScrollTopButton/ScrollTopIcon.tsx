@@ -2,9 +2,15 @@ import { useState, useEffect } from "react";
 import cx from "classnames";
 
 import { IconToTop } from "Icons";
+import { useRouter } from "next/router";
 
 export const ScrollTopIcon = () => {
   const [show, setShow] = useState(false);
+  const { asPath } = useRouter();
+
+  useEffect(() => {
+    setShow(false);
+  }, [asPath]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -19,6 +25,7 @@ export const ScrollTopIcon = () => {
     );
     observer.observe(document.getElementsByTagName("h1")[0]);
     return () => {
+      setShow(false);
       observer.disconnect();
     };
   }, []);
